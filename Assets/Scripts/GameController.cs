@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     private LineRenderer lineRenderer;
-
+    [SerializeField] private TextMeshProUGUI distanceText;
+    [SerializeField] private TextMeshProUGUI positionText;
+    [SerializeField] private TextMeshProUGUI velocityText;
     public List<GameObject> pickups; // List of pickups to track
     public float detectionRadius = 5f; // Radius to check for closest pickup
+    
+    private Vector3 previousPosition;
+    private Vector3 velocity;
 
     private void Start()
     {
@@ -20,6 +27,8 @@ public class GameController : MonoBehaviour
         // Initialize the line renderer positions
         lineRenderer.positionCount = 2; // Assuming you want two positions
         lineRenderer.enabled = false; // Start with line disabled
+
+        previousPosition = transform.position;
     }
 
     private void Update()
@@ -27,6 +36,22 @@ public class GameController : MonoBehaviour
         GameObject closestPickup = FindClosestPickup();
         HighlightPickups(closestPickup);
         UpdateLineRenderer(closestPickup);
+        var position = gameObject.transform.position;
+        positionText.text = "Position :" + 
+                            position.x.ToString("0.0") 
+                            + "," + position.z.ToString("0.0");
+        
+        
+        // Calculate velocity based on the difference in position over time
+        var position1 = transform.position;
+        velocity = (position1 - previousPosition) / Time.deltaTime;
+
+        // Update previous position
+        previousPosition = position1;
+
+        // Optional: print the velocity for debugging
+        velocityText.text = "Velocity: " + velocity.magnitude.ToString("0.0");
+
     }
 
     private GameObject FindClosestPickup()
@@ -44,6 +69,7 @@ public class GameController : MonoBehaviour
             {
                 closestDistance = distance;
                 closest = pickup;
+                distanceText.text = "Distance: " + closestDistance.ToString("0.0");
             }
         }
 
