@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7678646528413613978}
   - component: {fileID: 4393839456971934027}
-  - component: {fileID: 779166319158088844}
+  - component: {fileID: 5193097576201233253}
   m_Layer: 5
   m_Name: DistanceToObject
   m_TagString: Untagged
@@ -45,7 +45,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3603714840367064557}
   m_CullTransparentMesh: 1
---- !u!114 &779166319158088844
+--- !u!114 &5193097576201233253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
