@@ -7,24 +7,21 @@ public class ShipController : MonoBehaviour
     public float rotationSpeed = 5f;
     public Vector2 xBounds = new Vector2(-5f, 5f);
     public Vector2 zBounds = new Vector2(-15f, 0f);
+    public GameObject boltPrefab; // Public variable for the bolt prefab
+    public Transform boltSpawnPoint; // Public variable for the bolt spawn point
+    public float fireRate = 0.5f; // Minimum time between shots
+
     private Rigidbody rb;
     private InputAction moveAction;
+    private InputAction fireAction;
+    private float nextFireTime = 0f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable()
-    {
-        moveAction = InputManager.Instance.moveAction;
-        moveAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        moveAction.Disable();
-    }
+    
 
     private void FixedUpdate()
     {
@@ -41,5 +38,14 @@ public class ShipController : MonoBehaviour
         // Add rotation for lateral movements
         float rotationValue = -inputVector.x * rotationSpeed;
         rb.rotation = Quaternion.Euler(0, 0, rotationValue);
+    }
+
+    private void Update()
+    {
+        if (InputManager.Instance.fireAction.triggered && Time.time >= nextFireTime)
+        {
+            nextFireTime = Time.time + fireRate;
+            Instantiate(boltPrefab, boltSpawnPoint.position, boltSpawnPoint.rotation);
+        }
     }
 }

@@ -7,7 +7,8 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
     public InputActionAsset inputActions;
-    public InputAction moveAction; // New variable for Move action
+    public InputAction moveAction; // Variable for Move action
+    public InputAction fireAction; // New variable for Fire action
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         moveAction = inputActions.FindAction("Move"); // Assign Move action
+        fireAction = inputActions.FindAction("Fire"); // Assign Fire action
     }
 
     // Update is called once per frame
