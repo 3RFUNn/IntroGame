@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IntroGame.unity
-    guid: a46e3fdeb81fdf242bca5ec651309f1c
+    path: Assets/Scenes/Lab5.unity
+    guid: 5d9fa5d6c75ae7748bab831d551ad8d8
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
