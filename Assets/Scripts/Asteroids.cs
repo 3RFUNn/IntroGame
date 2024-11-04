@@ -15,7 +15,7 @@ public class Asteroids : MonoBehaviour
         InvokeRepeating("SpawnAsteroid", 0f, spawnInterval);
     }
 
-    void SpawnAsteroid()
+    public void SpawnAsteroid()
     {
         Vector3 spawnPosition = new Vector3(
             Random.Range(-spawnRadius, spawnRadius),0f,15f);
